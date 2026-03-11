@@ -88,4 +88,41 @@ class AuthController extends Controller
         
         return redirect()->route('login');
     }
+
+    /**
+     * API Login - returns JSON with token
+     */
+    public function apiLogin(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $credentials = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            $token = $user->createToken('api-token')->plainTextToken;
+            
+            return response()->json([
+                'success' => true,
+                'token' => $token,
+                'user' => [
+                    'id' => $user->id,
+                    'username' => $user->username,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'error' => true,
+            'message' => 'Invalid credentials'
+        ], 401);
+    }
 }

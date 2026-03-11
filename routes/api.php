@@ -5,12 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\LocationPingController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
 // Public endpoints (no auth required)
+Route::post('/login', [AuthController::class, 'apiLogin']);
 Route::get('/devices/avatar-icons', [DeviceController::class, 'getAvatarIcons']);
 Route::post('/pings', [LocationPingController::class, 'store']);
 Route::get('/devices/{deviceId}/check-updates', [DeviceController::class, 'checkUpdates']);
