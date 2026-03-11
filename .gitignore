@@ -1,0 +1,55 @@
+# Kiro and IDE files
+.kiro/
+.idea/
+.vscode/
+
+# Environment files
+.env
+*.env
+backend/.env
+backend/.env.example
+backend/.env.production
+
+# Test files (moved to backend/tests/)
+backend/test*.php
+backend/check*.php
+backend/seed*.php
+backend/update*.php
+
+# Flutter build and cache files
+tracker_app/build/
+tracker_app/.dart_tool/
+tracker_app/.flutter-plugins
+tracker_app/.flutter-plugins-dependencies
+backend/tracker_app/build/
+backend/tracker_app/.dart_tool/
+backend/tracker_app/.flutter-plugins
+backend/tracker_app/.flutter-plugins-dependencies
+
+# Dependencies
+node_modules/
+vendor/
+backend/vendor/
+
+# Laravel specific
+backend/storage/logs/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/bootstrap/cache/
+
+# Database
+backend/database/database.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# PHPUnit
+backend/.phpunit.result.cache
+
+# Composer
+backend/composer.lock

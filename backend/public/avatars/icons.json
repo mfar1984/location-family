@@ -1,0 +1,298 @@
+{
+  "icons": [
+    {
+      "id": "man",
+      "name": "Man",
+      "emoji": "👨",
+      "color": "#3498db"
+    },
+    {
+      "id": "woman",
+      "name": "Woman",
+      "emoji": "👩",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "boy",
+      "name": "Boy",
+      "emoji": "👦",
+      "color": "#9b59b6"
+    },
+    {
+      "id": "girl",
+      "name": "Girl",
+      "emoji": "👧",
+      "color": "#f39c12"
+    },
+    {
+      "id": "old-man",
+      "name": "Grandfather",
+      "emoji": "👴",
+      "color": "#95a5a6"
+    },
+    {
+      "id": "old-woman",
+      "name": "Grandmother",
+      "emoji": "👵",
+      "color": "#e67e22"
+    },
+    {
+      "id": "baby",
+      "name": "Baby",
+      "emoji": "👶",
+      "color": "#1abc9c"
+    },
+    {
+      "id": "person",
+      "name": "Person",
+      "emoji": "🧑",
+      "color": "#34495e"
+    },
+    {
+      "id": "man-beard",
+      "name": "Man with Beard",
+      "emoji": "🧔",
+      "color": "#2c3e50"
+    },
+    {
+      "id": "woman-blonde",
+      "name": "Blonde Woman",
+      "emoji": "👱‍♀️",
+      "color": "#f1c40f"
+    },
+    {
+      "id": "man-blonde",
+      "name": "Blonde Man",
+      "emoji": "👱‍♂️",
+      "color": "#3498db"
+    },
+    {
+      "id": "woman-red-hair",
+      "name": "Red Hair Woman",
+      "emoji": "👩‍🦰",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "man-red-hair",
+      "name": "Red Hair Man",
+      "emoji": "👨‍🦰",
+      "color": "#c0392b"
+    },
+    {
+      "id": "woman-curly-hair",
+      "name": "Curly Hair Woman",
+      "emoji": "👩‍🦱",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "man-curly-hair",
+      "name": "Curly Hair Man",
+      "emoji": "👨‍🦱",
+      "color": "#9b59b6"
+    },
+    {
+      "id": "woman-white-hair",
+      "name": "White Hair Woman",
+      "emoji": "👩‍🦳",
+      "color": "#bdc3c7"
+    },
+    {
+      "id": "man-white-hair",
+      "name": "White Hair Man",
+      "emoji": "👨‍🦳",
+      "color": "#95a5a6"
+    },
+    {
+      "id": "woman-bald",
+      "name": "Bald Woman",
+      "emoji": "👩‍🦲",
+      "color": "#e67e22"
+    },
+    {
+      "id": "man-bald",
+      "name": "Bald Man",
+      "emoji": "👨‍🦲",
+      "color": "#d35400"
+    },
+    {
+      "id": "student",
+      "name": "Student",
+      "emoji": "🧑‍🎓",
+      "color": "#2980b9"
+    },
+    {
+      "id": "teacher",
+      "name": "Teacher",
+      "emoji": "🧑‍🏫",
+      "color": "#27ae60"
+    },
+    {
+      "id": "doctor",
+      "name": "Doctor",
+      "emoji": "🧑‍⚕️",
+      "color": "#16a085"
+    },
+    {
+      "id": "chef",
+      "name": "Chef",
+      "emoji": "🧑‍🍳",
+      "color": "#f39c12"
+    },
+    {
+      "id": "farmer",
+      "name": "Farmer",
+      "emoji": "🧑‍🌾",
+      "color": "#27ae60"
+    },
+    {
+      "id": "mechanic",
+      "name": "Mechanic",
+      "emoji": "🧑‍🔧",
+      "color": "#34495e"
+    },
+    {
+      "id": "office-worker",
+      "name": "Office Worker",
+      "emoji": "🧑‍💼",
+      "color": "#2c3e50"
+    },
+    {
+      "id": "scientist",
+      "name": "Scientist",
+      "emoji": "🧑‍🔬",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "artist",
+      "name": "Artist",
+      "emoji": "🧑‍🎨",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "pilot",
+      "name": "Pilot",
+      "emoji": "🧑‍✈️",
+      "color": "#3498db"
+    },
+    {
+      "id": "astronaut",
+      "name": "Astronaut",
+      "emoji": "🧑‍🚀",
+      "color": "#9b59b6"
+    },
+    {
+      "id": "firefighter",
+      "name": "Firefighter",
+      "emoji": "🧑‍🚒",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "police",
+      "name": "Police Officer",
+      "emoji": "👮",
+      "color": "#2980b9"
+    },
+    {
+      "id": "detective",
+      "name": "Detective",
+      "emoji": "🕵️",
+      "color": "#34495e"
+    },
+    {
+      "id": "guard",
+      "name": "Guard",
+      "emoji": "💂",
+      "color": "#c0392b"
+    },
+    {
+      "id": "ninja",
+      "name": "Ninja",
+      "emoji": "🥷",
+      "color": "#2c3e50"
+    },
+    {
+      "id": "prince",
+      "name": "Prince",
+      "emoji": "🤴",
+      "color": "#f1c40f"
+    },
+    {
+      "id": "princess",
+      "name": "Princess",
+      "emoji": "👸",
+      "color": "#e91e63"
+    },
+    {
+      "id": "superhero",
+      "name": "Superhero",
+      "emoji": "🦸",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "supervillain",
+      "name": "Supervillain",
+      "emoji": "🦹",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "emoji": "🧙",
+      "color": "#9b59b6"
+    },
+    {
+      "id": "elf",
+      "name": "Elf",
+      "emoji": "🧝",
+      "color": "#27ae60"
+    },
+    {
+      "id": "vampire",
+      "name": "Vampire",
+      "emoji": "🧛",
+      "color": "#c0392b"
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "emoji": "🧟",
+      "color": "#95a5a6"
+    },
+    {
+      "id": "genie",
+      "name": "Genie",
+      "emoji": "🧞",
+      "color": "#3498db"
+    },
+    {
+      "id": "merperson",
+      "name": "Merperson",
+      "emoji": "🧜",
+      "color": "#1abc9c"
+    },
+    {
+      "id": "fairy",
+      "name": "Fairy",
+      "emoji": "🧚",
+      "color": "#e91e63"
+    },
+    {
+      "id": "angel",
+      "name": "Angel",
+      "emoji": "👼",
+      "color": "#f1c40f"
+    },
+    {
+      "id": "santa",
+      "name": "Santa Claus",
+      "emoji": "🎅",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "mrs-claus",
+      "name": "Mrs. Claus",
+      "emoji": "🤶",
+      "color": "#c0392b"
+    }
+  ]
+}
