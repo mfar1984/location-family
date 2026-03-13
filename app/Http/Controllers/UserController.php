@@ -275,6 +275,48 @@ class UserController extends Controller
             'message' => 'Device deleted successfully'
         ]);
     }
+
+    /**
+     * Uninstall device - called by app before uninstall
+     * No verification code needed as app already validated
+     */
+    public function uninstallDevice($deviceId)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Unauthorized'
+            ], 401);
+        }
+
+        $device = Device::where('device_id', $deviceId)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if (!$device) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Device not found'
+            ], 404);
+        }
+
+        // Delete associated location pings
+        $device->locationPings()->delete();
+
+        // Clear verification code before deletion
+        $device->clearVerificationCode();
+
+        // Delete device
+        $device->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Device uninstalled successfully'
+        ]);
+    }
+
     
     public function changePassword(Request $request)
     {

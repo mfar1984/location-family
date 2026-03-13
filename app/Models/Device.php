@@ -80,7 +80,7 @@ class Device extends Model
         }
         
         $this->verification_code = $code;
-        $this->verification_code_expires_at = now()->addMinutes(30); // Expire in 30 minutes
+        $this->verification_code_expires_at = now()->addMinutes(10); // Expire in 10 minutes
         $this->save();
         
         return $code;

@@ -18,7 +18,7 @@
 
 .admin-modal {
     background: white;
-    border-radius: 16px;
+    border-radius: 12px;
     width: 95%;
     max-width: 1000px;
     max-height: 80vh;
@@ -30,8 +30,8 @@
 
 .admin-modal-header {
     padding: 18px 20px;
-    background: #2196F3;
-    color: white;
+    background: white;
+    border-bottom: 1px solid #e1e5e9;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,37 +39,37 @@
 
 .admin-modal-header h2 {
     margin: 0;
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d3748;
 }
 
 .admin-modal-close {
     background: none;
     border: none;
-    color: white;
-    font-size: 20px;
+    color: #a0aec0;
+    font-size: 22px;
     cursor: pointer;
-    padding: 0;
-    width: 28px;
-    height: 28px;
+    padding: 4px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    transition: all 0.3s ease;
+    transition: color 0.2s, transform 0.3s ease;
     transform: rotate(0deg);
 }
 
 .admin-modal-close:hover {
-    background: rgba(244, 67, 54, 0.2);
-    color: #f44336;
-    transform: rotate(180deg);
+    color: #ef4444;
+    transform: rotate(90deg);
 }
 
 .admin-modal-tabs {
     display: flex;
-    background: #f5f5f5;
-    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
     overflow-x: auto;
 }
 
@@ -78,23 +78,22 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: #666;
-    transition: all 0.3s;
+    color: #6c757d;
+    transition: all 0.2s;
     white-space: nowrap;
     border-bottom: 2px solid transparent;
 }
 
-.admin-tab:hover {
-    background: rgba(33, 150, 243, 0.1);
-    color: #2196F3;
+.admin-tab:hover:not(.active) {
+    background: #f1f3f4;
 }
 
 .admin-tab.active {
-    color: #2196F3;
+    color: #495057;
     background: white;
-    border-bottom-color: #2196F3;
+    border-bottom-color: #4299e1;
 }
 
 .admin-modal-content {
@@ -119,8 +118,8 @@
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
-    color: #2c3e50;
-    font-size: 13px;
+    color: #495057;
+    font-size: 12px;
 }
 
 .admin-form-group input,
@@ -128,16 +127,17 @@
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #dee2e6;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: border-color 0.2s;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
     box-sizing: border-box;
 }
 
 .admin-form-group input:focus,
 .admin-form-group select:focus {
     outline: none;
-    border-color: #2196F3;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 .admin-form-group input[type="password"] {
@@ -145,27 +145,27 @@
 }
 
 .admin-btn {
-    background: #2196F3;
+    background: #4299e1;
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 400;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .admin-btn:hover {
-    background: #1976D2;
+    background: #3182ce;
 }
 
 .admin-btn-primary {
-    background: #2196F3;
+    background: #4299e1;
 }
 
 .admin-btn-primary:hover {
-    background: #1976D2;
+    background: #3182ce;
 }
 
 .admin-btn-success {
@@ -203,7 +203,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 12px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .admin-table th,
@@ -216,8 +216,8 @@
 .admin-table th {
     background: #f8f9fa;
     font-weight: 500;
-    color: #333;
-    font-size: 13px;
+    color: #495057;
+    font-size: 12px;
 }
 
 .admin-table tr:hover {
@@ -234,15 +234,27 @@
     flex: 1;
     padding: 8px 12px;
     border: 1px solid #dee2e6;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.admin-search-bar input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 .admin-search-bar select {
     padding: 8px 12px;
     border: 1px solid #dee2e6;
-    border-radius: 4px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.admin-search-bar select:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 .admin-pagination {
@@ -257,13 +269,16 @@
     padding: 6px 12px;
     border: 1px solid #dee2e6;
     background: white;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s, border-color 0.2s;
 }
 
 .admin-pagination button:hover:not(:disabled) {
-    background: #f0f0f0;
+    background: #f8f9fa;
+    border-color: #4299e1;
 }
 
 .admin-pagination button:disabled {
@@ -273,14 +288,14 @@
 
 .admin-pagination span {
     font-size: 13px;
-    color: #666;
+    color: #6c757d;
 }
 
 .admin-alert {
     padding: 10px 14px;
-    border-radius: 4px;
+    border-radius: 6px;
     margin-bottom: 12px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .admin-alert-success {

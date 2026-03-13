@@ -31,6 +31,7 @@ Route::prefix('otp')->group(function () {
 Route::middleware(['auth:sanctum', 'check.user.status'])->group(function () {
     Route::post('/devices/register', [DeviceController::class, 'register']);
     Route::get('/devices', [DeviceController::class, 'index']);
+    Route::post('/devices/{deviceId}/uninstall', [App\Http\Controllers\UserController::class, 'uninstallDevice']);
 });
 
 // Protected endpoints (require web auth and user status check for dashboard)

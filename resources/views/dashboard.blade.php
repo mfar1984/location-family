@@ -61,7 +61,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 999;
             display: none;
         }
@@ -71,9 +71,9 @@
         }
         
         .drawer-header {
-            padding: 20px;
-            background: #2c3e50;
-            color: white;
+            padding: 18px 20px;
+            background: white;
+            border-bottom: 1px solid #e1e5e9;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -88,17 +88,18 @@
         }
         
         .drawer-avatar {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            border: 3px solid white;
+            border: 2px solid #4299e1;
             overflow: hidden;
-            background: white;
+            background: #4299e1;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
+            font-size: 24px;
             flex-shrink: 0;
+            color: white;
         }
         
         .drawer-avatar img {
@@ -109,55 +110,106 @@
         
         .drawer-header h2 {
             margin: 0;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 600;
+            color: #2d3748;
         }
         
         .close-btn {
             background: none;
             border: none;
-            color: white;
-            font-size: 28px;
+            color: #a0aec0;
+            font-size: 24px;
             cursor: pointer;
-            padding: 0;
+            padding: 4px;
             width: 32px;
             height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 4px;
-            transition: all 0.3s ease;
+            transition: color 0.2s, transform 0.3s ease;
             transform: rotate(0deg);
         }
         
         .close-btn:hover {
-            background: rgba(244, 67, 54, 0.2);
-            color: #f44336;
-            transform: rotate(180deg);
+            color: #ef4444;
+            transform: rotate(90deg);
         }
         
         .drawer-content {
-            padding: 20px;
+            padding: 0;
+        }
+        
+        /* Tab Navigation Styles */
+        .drawer-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .drawer-tab-btn {
+            flex: 1;
+            padding: 14px 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 500;
+            color: #6c757d;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .drawer-tab-btn.active {
+            color: #495057;
+            background: white;
+            border-bottom-color: #4299e1;
+        }
+        
+        .drawer-tab-btn:hover:not(.active) {
+            background: #f1f3f4;
+            color: #495057;
+        }
+        
+        .drawer-tab-icon {
+            font-size: 16px;
+        }
+        
+        .drawer-tab-content {
+            padding: 16px;
+            display: none;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        
+        .drawer-tab-content.active {
+            display: block;
         }
         
         .info-section {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         
         .info-section h3 {
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 600;
-            color: #7f8c8d;
+            color: #a0aec0;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
         
         .info-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #ecf0f1;
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f3f4;
+            gap: 12px;
         }
         
         .info-item:last-child {
@@ -166,19 +218,23 @@
         
         .info-label {
             font-weight: 500;
-            color: #34495e;
+            color: #495057;
+            font-size: 12px;
+            flex-shrink: 0;
         }
         
         .info-value {
-            color: #7f8c8d;
+            color: #718096;
             text-align: right;
+            font-size: 12px;
+            word-break: break-word;
         }
         
         .status-badge {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 12px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
         }
         
@@ -200,14 +256,14 @@
         .battery-indicator {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .battery-bar {
-            width: 60px;
-            height: 12px;
-            border: 2px solid #34495e;
-            border-radius: 2px;
+            width: 50px;
+            height: 10px;
+            border: 2px solid #495057;
+            border-radius: 3px;
             position: relative;
             overflow: hidden;
         }
@@ -232,23 +288,23 @@
         /* Manual Update Button Styles */
         .update-button {
             width: 100%;
-            padding: 12px 20px;
-            background: #3498db;
+            padding: 10px 16px;
+            background: #4299e1;
             color: white;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
             cursor: pointer;
             transition: background 0.2s, opacity 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .update-button:hover:not(:disabled) {
-            background: #2980b9;
+            background: #3182ce;
         }
         
         .update-button:disabled {
@@ -257,8 +313,8 @@
         }
         
         .update-button .spinner {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-top-color: white;
             border-radius: 50%;
@@ -269,15 +325,11 @@
             to { transform: rotate(360deg); }
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
         .update-message {
-            margin-top: 12px;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 14px;
+            margin-top: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
             text-align: center;
             display: none;
         }
@@ -414,115 +466,206 @@
             <button class="close-btn" id="close-drawer">&times;</button>
         </div>
         <div class="drawer-content">
-            <div class="info-section">
-                <h3>Location</h3>
-                <div class="info-item">
-                    <span class="info-label">Latitude</span>
-                    <span class="info-value" id="drawer-latitude">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Longitude</span>
-                    <span class="info-value" id="drawer-longitude">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Accuracy</span>
-                    <span class="info-value" id="drawer-accuracy">-</span>
-                </div>
-            </div>
-            
-            <div class="info-section">
-                <h3>Device Status</h3>
-                <div class="info-item">
-                    <span class="info-label">Battery Level</span>
-                    <span class="info-value">
-                        <div class="battery-indicator">
-                            <span id="drawer-battery-text">-</span>
-                            <div class="battery-bar">
-                                <div class="battery-fill" id="drawer-battery-bar"></div>
-                            </div>
-                        </div>
-                    </span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Signal Strength</span>
-                    <span class="info-value" id="drawer-signal">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Status</span>
-                    <span class="info-value" id="drawer-status">-</span>
-                </div>
-            </div>
-            
-            <div class="info-section">
-                <h3>Last Update</h3>
-                <div class="info-item">
-                    <span class="info-label">Timestamp</span>
-                    <span class="info-value" id="drawer-timestamp">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Time Ago</span>
-                    <span class="info-value" id="drawer-time-ago">-</span>
-                </div>
-            </div>
-            
-            <div class="info-section" id="optional-status-section" style="display: none;">
-                <h3>Optional Status</h3>
-                <div class="info-item" id="microphone-item" style="display: none;">
-                    <span class="info-label">Microphone</span>
-                    <span class="info-value" id="drawer-microphone">-</span>
-                </div>
-                <div class="info-item" id="camera-item" style="display: none;">
-                    <span class="info-label">Camera</span>
-                    <span class="info-value" id="drawer-camera">-</span>
-                </div>
-                <div class="info-item" id="recording-item" style="display: none;">
-                    <span class="info-label">Recording</span>
-                    <span class="info-value" id="drawer-recording">-</span>
-                </div>
-            </div>
-            
-            <div class="info-section" id="device-info-section">
-                <h3>Device Info</h3>
-                <div class="info-item">
-                    <span class="info-label">IP Address</span>
-                    <span class="info-value" id="drawer-ip-address">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Device Model</span>
-                    <span class="info-value" id="drawer-device-model">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Device Brand</span>
-                    <span class="info-value" id="drawer-device-brand">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">OS Version</span>
-                    <span class="info-value" id="drawer-os-version">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">App Version</span>
-                    <span class="info-value" id="drawer-app-version">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Device ID</span>
-                    <span class="info-value" id="drawer-device-id">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Serial Number</span>
-                    <span class="info-value" id="drawer-serial-number">-</span>
-                </div>
-                <div class="info-item" id="phone-number-item" style="display: none;">
-                    <span class="info-label">Phone Number</span>
-                    <span class="info-value" id="drawer-phone-number">-</span>
-                </div>
-            </div>
-            
-            <div class="info-section">
-                <h3>Actions</h3>
-                <button class="update-button" id="manual-update-btn">
-                    <span id="update-btn-text">Request Update</span>
+            <!-- Tab Navigation - Same as Profile Settings -->
+            <div style="
+                display: flex;
+                background: #f8f9fa;
+                border-bottom: 1px solid #e9ecef;
+            ">
+                <button class="drawer-tab-btn active" data-tab="location" style="
+                    flex: 1;
+                    padding: 14px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 11px;
+                    font-weight: 500;
+                    color: #6c757d;
+                    border-bottom: 2px solid transparent;
+                    transition: all 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 4px;
+                ">
+                    <span class="material-symbols-outlined" style="font-size: 18px; font-weight: 300;">location_on</span>
+                    <span>Location</span>
                 </button>
-                <div class="update-message" id="update-message"></div>
+                <button class="drawer-tab-btn" data-tab="device" style="
+                    flex: 1;
+                    padding: 14px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 11px;
+                    font-weight: 500;
+                    color: #6c757d;
+                    border-bottom: 2px solid transparent;
+                    transition: all 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 4px;
+                ">
+                    <span class="material-symbols-outlined" style="font-size: 18px; font-weight: 300;">smartphone</span>
+                    <span>Device</span>
+                </button>
+                <button class="drawer-tab-btn" data-tab="media" style="
+                    flex: 1;
+                    padding: 14px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 11px;
+                    font-weight: 500;
+                    color: #6c757d;
+                    border-bottom: 2px solid transparent;
+                    transition: all 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 4px;
+                ">
+                    <span class="material-symbols-outlined" style="font-size: 18px; font-weight: 300;">videocam</span>
+                    <span>Media</span>
+                </button>
+            </div>
+            
+            <!-- Tab 1: Location & Status -->
+            <div class="drawer-tab-content active" id="location-tab">
+                <div class="info-section">
+                    <h3>Location</h3>
+                    <div class="info-item">
+                        <span class="info-label">Latitude</span>
+                        <span class="info-value" id="drawer-latitude">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Longitude</span>
+                        <span class="info-value" id="drawer-longitude">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Accuracy</span>
+                        <span class="info-value" id="drawer-accuracy">-</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Device Status</h3>
+                    <div class="info-item">
+                        <span class="info-label">Battery Level</span>
+                        <span class="info-value">
+                            <div class="battery-indicator">
+                                <span id="drawer-battery-text">-</span>
+                                <div class="battery-bar">
+                                    <div class="battery-fill" id="drawer-battery-bar"></div>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Signal Strength</span>
+                        <span class="info-value" id="drawer-signal">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value" id="drawer-status">-</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Last Update</h3>
+                    <div class="info-item">
+                        <span class="info-label">Timestamp</span>
+                        <span class="info-value" id="drawer-timestamp">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Time Ago</span>
+                        <span class="info-value" id="drawer-time-ago">-</span>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Actions</h3>
+                    <button class="update-button" id="manual-update-btn">
+                        <span id="update-btn-text">Request Update</span>
+                    </button>
+                    <div class="update-message" id="update-message"></div>
+                </div>
+            </div>
+            
+            <!-- Tab 2: Device Info -->
+            <div class="drawer-tab-content" id="device-tab">
+                <div class="info-section" id="device-info-section">
+                    <h3>Device Information</h3>
+                    <div class="info-item">
+                        <span class="info-label">IP Address</span>
+                        <span class="info-value" id="drawer-ip-address">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Device Model</span>
+                        <span class="info-value" id="drawer-device-model">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Device Brand</span>
+                        <span class="info-value" id="drawer-device-brand">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">OS Version</span>
+                        <span class="info-value" id="drawer-os-version">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">App Version</span>
+                        <span class="info-value" id="drawer-app-version">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Device ID</span>
+                        <span class="info-value" id="drawer-device-id">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Serial Number</span>
+                        <span class="info-value" id="drawer-serial-number">-</span>
+                    </div>
+                    <div class="info-item" id="phone-number-item" style="display: none;">
+                        <span class="info-label">Phone Number</span>
+                        <span class="info-value" id="drawer-phone-number">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab 3: Media & Recording -->
+            <div class="drawer-tab-content" id="media-tab">
+                <div class="info-section" id="optional-status-section">
+                    <h3>Media Status</h3>
+                    <div class="info-item" id="microphone-item" style="display: none;">
+                        <span class="info-label">Microphone</span>
+                        <span class="info-value" id="drawer-microphone">-</span>
+                    </div>
+                    <div class="info-item" id="camera-item" style="display: none;">
+                        <span class="info-label">Camera</span>
+                        <span class="info-value" id="drawer-camera">-</span>
+                    </div>
+                    <div class="info-item" id="recording-item" style="display: none;">
+                        <span class="info-label">Recording</span>
+                        <span class="info-value" id="drawer-recording">-</span>
+                    </div>
+                </div>
+                
+                <!-- Placeholder for future recording features -->
+                <div class="info-section">
+                    <h3>Recording Controls</h3>
+                    <div style="
+                        text-align: center;
+                        padding: 40px 20px;
+                        color: #6c757d;
+                        background: #f8f9fa;
+                        border-radius: 8px;
+                        border: 2px dashed #dee2e6;
+                    ">
+                        <div style="font-size: 32px; margin-bottom: 12px;">🎬</div>
+                        <div style="font-weight: 500; margin-bottom: 8px;">Recording Features</div>
+                        <div style="font-size: 14px;">Camera capture and audio recording controls will be available here in future updates.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1022,7 +1165,7 @@
             }
             document.getElementById('drawer-time-ago').textContent = timeAgo;
             
-            // Handle optional status fields
+            // Handle optional status fields (now in Media tab)
             const optionalSection = document.getElementById('optional-status-section');
             let hasOptionalStatus = false;
             
@@ -1053,8 +1196,33 @@
                 document.getElementById('recording-item').style.display = 'none';
             }
             
-            // Show/hide optional status section
-            optionalSection.style.display = hasOptionalStatus ? 'block' : 'none';
+            // Show/hide media tab indicator if there's media status data
+            const mediaTabBtn = document.querySelector('[data-tab="media"]');
+            if (hasOptionalStatus) {
+                // Add indicator dot to media tab if there's active media
+                if (!mediaTabBtn.querySelector('.status-indicator')) {
+                    const indicator = document.createElement('span');
+                    indicator.className = 'status-indicator';
+                    indicator.style.cssText = `
+                        position: absolute;
+                        top: 8px;
+                        right: 8px;
+                        width: 8px;
+                        height: 8px;
+                        background: #4CAF50;
+                        border-radius: 50%;
+                        border: 2px solid white;
+                    `;
+                    mediaTabBtn.style.position = 'relative';
+                    mediaTabBtn.appendChild(indicator);
+                }
+            } else {
+                // Remove indicator if no media status
+                const indicator = mediaTabBtn.querySelector('.status-indicator');
+                if (indicator) {
+                    indicator.remove();
+                }
+            }
             
             // Populate device info
             document.getElementById('drawer-ip-address').textContent = deviceData.ipAddress || 'N/A';
@@ -1084,6 +1252,64 @@
             drawer.classList.remove('open');
             overlay.classList.remove('visible');
         }
+        
+        // Drawer tab functionality
+        function initializeDrawerTabs() {
+            const tabBtns = document.querySelectorAll('.drawer-tab-btn');
+            const tabContents = document.querySelectorAll('.drawer-tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabName = btn.dataset.tab;
+                    
+                    // Update tab buttons
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.borderBottomColor = 'transparent';
+                        b.style.background = 'none';
+                        b.style.color = '#6c757d';
+                    });
+                    btn.classList.add('active');
+                    btn.style.borderBottomColor = '#4299e1';
+                    btn.style.background = 'white';
+                    btn.style.color = '#495057';
+                    
+                    // Update tab content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabName + '-tab').classList.add('active');
+                });
+                
+                // Add hover effects
+                btn.addEventListener('mouseenter', () => {
+                    if (!btn.classList.contains('active')) {
+                        btn.style.background = '#f1f3f4';
+                        btn.style.color = '#495057';
+                    }
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                    if (!btn.classList.contains('active')) {
+                        btn.style.background = 'none';
+                        btn.style.color = '#6c757d';
+                    }
+                });
+            });
+            
+            // Set initial active tab state
+            const activeTab = document.querySelector('.drawer-tab-btn.active');
+            if (activeTab) {
+                activeTab.style.borderBottomColor = '#4299e1';
+                activeTab.style.background = 'white';
+                activeTab.style.color = '#495057';
+            }
+        }
+        
+        // Initialize drawer tabs when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDrawerTabs();
+        });
         
         // Close button click handler
         closeBtn.addEventListener('click', closeDrawer);
@@ -1182,9 +1408,9 @@
     ">
         <div style="
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             width: 90%;
-            max-width: 600px;
+            max-width: 500px;
             max-height: 80vh;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -1192,30 +1418,29 @@
             <!-- Modal Header -->
             <div style="
                 padding: 18px 20px;
-                background: #2196F3;
-                color: white;
+                background: white;
+                border-bottom: 1px solid #e1e5e9;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             ">
-                <h2 style="margin: 0; font-size: 18px; font-weight: 500;">Profile Settings</h2>
+                <h2 style="margin: 0; font-size: 15px; font-weight: 600; color: #2d3748;">Profile Settings</h2>
                 <button id="close-profile-modal" style="
                     background: none;
                     border: none;
-                    color: white;
-                    font-size: 20px;
+                    color: #a0aec0;
+                    font-size: 22px;
                     cursor: pointer;
-                    padding: 0;
-                    width: 28px;
-                    height: 28px;
+                    padding: 4px;
+                    width: 32px;
+                    height: 32px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     border-radius: 4px;
-                    transition: all 0.3s ease;
+                    transition: color 0.2s, transform 0.3s ease;
                     transform: rotate(0deg);
-                " onmouseover="this.style.background='rgba(244, 67, 54, 0.2)'; this.style.color='#f44336'; this.style.transform='rotate(180deg)'" 
-                   onmouseout="this.style.background='none'; this.style.color='white'; this.style.transform='rotate(0deg)'">
+                " onmouseover="this.style.color='#ef4444'; this.style.transform='rotate(90deg)'" onmouseout="this.style.color='#a0aec0'; this.style.transform='rotate(0deg)'">
                     ×
                 </button>
             </div>
@@ -1228,37 +1453,37 @@
             ">
                 <button class="tab-btn active" data-tab="profile" style="
                     flex: 1;
-                    padding: 14px;
+                    padding: 12px;
                     background: none;
                     border: none;
                     cursor: pointer;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 500;
-                    color: #495057;
+                    color: #6c757d;
                     border-bottom: 2px solid transparent;
                     transition: all 0.2s;
                 ">Profile</button>
                 <button class="tab-btn" data-tab="settings" style="
                     flex: 1;
-                    padding: 14px;
+                    padding: 12px;
                     background: none;
                     border: none;
                     cursor: pointer;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 500;
-                    color: #495057;
+                    color: #6c757d;
                     border-bottom: 2px solid transparent;
                     transition: all 0.2s;
                 ">Settings</button>
                 <button class="tab-btn" data-tab="devices" style="
                     flex: 1;
-                    padding: 14px;
+                    padding: 12px;
                     background: none;
                     border: none;
                     cursor: pointer;
-                    font-size: 14px;
+                    font-size: 13px;
                     font-weight: 500;
-                    color: #495057;
+                    color: #6c757d;
                     border-bottom: 2px solid transparent;
                     transition: all 0.2s;
                 ">Devices</button>
@@ -1270,20 +1495,20 @@
                 <div id="profile-tab" class="tab-content">
                     <div style="text-align: center; margin-bottom: 20px;">
                         <div id="profile-avatar" style="
-                            width: 70px;
-                            height: 70px;
+                            width: 60px;
+                            height: 60px;
                             border-radius: 50%;
-                            background: #2196F3;
+                            background: #4299e1;
                             display: flex;
                             align-items: center;
                             justify-content: center;
                             margin: 0 auto 12px;
                             color: white;
-                            font-size: 36px;
+                            font-size: 24px;
                             cursor: pointer;
-                            transition: transform 0.2s, box-shadow 0.2s;
+                            transition: transform 0.2s, background 0.2s;
                             position: relative;
-                        " onclick="openAvatarPicker()" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'">
+                        " onclick="openAvatarPicker()" onmouseover="this.style.transform='scale(1.05)'; this.style.background='#3182ce'" onmouseout="this.style.transform='scale(1)'; this.style.background='#4299e1'">
                             👤
                             <div style="
                                 position: absolute;
@@ -1291,7 +1516,7 @@
                                 right: -2px;
                                 width: 24px;
                                 height: 24px;
-                                background: #2196F3;
+                                background: #4299e1;
                                 border-radius: 50%;
                                 display: flex;
                                 align-items: center;
@@ -1301,44 +1526,44 @@
                                 border: 2px solid white;
                             ">✏️</div>
                         </div>
-                        <h3 style="margin: 0 0 4px; color: #2c3e50; font-weight: 500;">{{ Auth::user()->username }}</h3>
-                        <p style="margin: 0; color: #6c757d; font-size: 13px;">{{ Auth::user()->email }}</p>
+                        <h3 style="margin: 0 0 4px; color: #2c3e50; font-size: 16px; font-weight: 600;">{{ Auth::user()->username }}</h3>
+                        <p style="margin: 0; color: #6c757d; font-size: 12px;">{{ Auth::user()->email }}</p>
                     </div>
                     
                     <form id="profile-form">
                         <div style="margin-bottom: 16px;">
-                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50; font-size: 13px;">Username</label>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #495057; font-size: 12px;">Username</label>
                             <input type="text" id="profile-username" value="{{ Auth::user()->username }}" style="
                                 width: 100%;
                                 padding: 10px 12px;
                                 border: 1px solid #dee2e6;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                transition: border-color 0.2s;
-                            ">
+                                border-radius: 6px;
+                                font-size: 13px;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            " onfocus="this.style.borderColor='#4299e1'; this.style.boxShadow='0 0 0 3px rgba(66, 153, 225, 0.1)'" onblur="this.style.borderColor='#dee2e6'; this.style.boxShadow='none'">
                         </div>
                         
                         <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50; font-size: 13px;">Email</label>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #495057; font-size: 12px;">Email</label>
                             <input type="email" id="profile-email" value="{{ Auth::user()->email }}" style="
                                 width: 100%;
                                 padding: 10px 12px;
                                 border: 1px solid #dee2e6;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                transition: border-color 0.2s;
-                            ">
+                                border-radius: 6px;
+                                font-size: 13px;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            " onfocus="this.style.borderColor='#4299e1'; this.style.boxShadow='0 0 0 3px rgba(66, 153, 225, 0.1)'" onblur="this.style.borderColor='#dee2e6'; this.style.boxShadow='none'">
                         </div>
                         
                         <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50; font-size: 13px;">License Key</label>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #495057; font-size: 12px;">License Key</label>
                             <div style="position: relative;">
                                 <input type="text" id="profile-license-key" value="{{ Auth::user()->license_key ?? 'Not generated' }}" readonly style="
                                     width: 100%;
                                     padding: 10px 40px 10px 12px;
                                     border: 1px solid #dee2e6;
-                                    border-radius: 4px;
-                                    font-size: 14px;
+                                    border-radius: 6px;
+                                    font-size: 12px;
                                     background: #f8f9fa;
                                     color: #495057;
                                     font-family: 'Courier New', monospace;
@@ -1350,35 +1575,35 @@
                                     right: 8px;
                                     top: 50%;
                                     transform: translateY(-50%);
-                                    background: #2196F3;
+                                    background: #4299e1;
                                     color: white;
                                     border: none;
-                                    padding: 6px 10px;
+                                    padding: 6px 12px;
                                     border-radius: 4px;
                                     font-size: 11px;
                                     cursor: pointer;
                                     transition: background 0.2s;
-                                " onmouseover="this.style.background='#1976D2'" onmouseout="this.style.background='#2196F3'">
+                                " onmouseover="this.style.background='#3182ce'" onmouseout="this.style.background='#4299e1'">
                                     📋 Copy
                                 </button>
                             </div>
-                            <p style="margin: 6px 0 0; font-size: 12px; color: #6c757d;">
+                            <p style="margin: 6px 0 0; font-size: 11px; color: #6c757d;">
                                 Use this license key to register devices in the Android app (max 10 devices)
                             </p>
                         </div>
                         
                         <div style="text-align: right;">
                             <button type="submit" style="
-                                background: #2196F3;
+                                background: #4299e1;
                                 color: white;
                                 border: none;
                                 padding: 10px 20px;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                font-weight: 400;
+                                border-radius: 6px;
+                                font-size: 13px;
+                                font-weight: 500;
                                 cursor: pointer;
                                 transition: background 0.2s;
-                            " onmouseover="this.style.background='#1976D2'" onmouseout="this.style.background='#2196F3'">
+                            " onmouseover="this.style.background='#3182ce'" onmouseout="this.style.background='#4299e1'">
                                 Update Profile
                             </button>
                         </div>
@@ -1387,57 +1612,57 @@
                 
                 <!-- Settings Tab -->
                 <div id="settings-tab" class="tab-content" style="display: none;">
-                    <h4 style="margin: 0 0 16px; color: #2c3e50; font-weight: 500;">Change Password</h4>
+                    <h4 style="margin: 0 0 16px; color: #2c3e50; font-size: 16px; font-weight: 500;">Change Password</h4>
                     
                     <form id="password-form">
                         <div style="margin-bottom: 16px;">
-                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50; font-size: 13px;">Current Password</label>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #495057; font-size: 12px;">Current Password</label>
                             <input type="password" id="current-password" style="
                                 width: 100%;
                                 padding: 10px 12px;
                                 border: 1px solid #dee2e6;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                transition: border-color 0.2s;
-                            ">
+                                border-radius: 6px;
+                                font-size: 13px;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            " onfocus="this.style.borderColor='#4299e1'; this.style.boxShadow='0 0 0 3px rgba(66, 153, 225, 0.1)'" onblur="this.style.borderColor='#dee2e6'; this.style.boxShadow='none'">
                         </div>
                         
                         <div style="margin-bottom: 16px;">
-                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50; font-size: 13px;">New Password</label>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #495057; font-size: 12px;">New Password</label>
                             <input type="password" id="new-password" style="
                                 width: 100%;
                                 padding: 10px 12px;
                                 border: 1px solid #dee2e6;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                transition: border-color 0.2s;
-                            ">
+                                border-radius: 6px;
+                                font-size: 13px;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            " onfocus="this.style.borderColor='#4299e1'; this.style.boxShadow='0 0 0 3px rgba(66, 153, 225, 0.1)'" onblur="this.style.borderColor='#dee2e6'; this.style.boxShadow='none'">
                         </div>
                         
                         <div style="margin-bottom: 20px;">
-                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50; font-size: 13px;">Confirm New Password</label>
+                            <label style="display: block; margin-bottom: 6px; font-weight: 500; color: #495057; font-size: 12px;">Confirm New Password</label>
                             <input type="password" id="confirm-password" style="
                                 width: 100%;
                                 padding: 10px 12px;
                                 border: 1px solid #dee2e6;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                transition: border-color 0.2s;
-                            ">
+                                border-radius: 6px;
+                                font-size: 13px;
+                                transition: border-color 0.2s, box-shadow 0.2s;
+                            " onfocus="this.style.borderColor='#4299e1'; this.style.boxShadow='0 0 0 3px rgba(66, 153, 225, 0.1)'" onblur="this.style.borderColor='#dee2e6'; this.style.boxShadow='none'">
                         </div>
                         
                         <div style="text-align: right;">
                             <button type="submit" style="
-                                background: #2196F3;
+                                background: #4299e1;
                                 color: white;
                                 border: none;
                                 padding: 10px 20px;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                font-weight: 400;
+                                border-radius: 6px;
+                                font-size: 13px;
+                                font-weight: 500;
                                 cursor: pointer;
                                 transition: background 0.2s;
-                            " onmouseover="this.style.background='#1976D2'" onmouseout="this.style.background='#2196F3'">
+                            " onmouseover="this.style.background='#3182ce'" onmouseout="this.style.background='#4299e1'">
                                 Change Password
                             </button>
                         </div>
@@ -1447,9 +1672,9 @@
                 <!-- Devices Tab -->
                 <div id="devices-tab" class="tab-content" style="display: none;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                        <h4 style="margin: 0; color: #2c3e50; font-weight: 500;">My Devices</h4>
+                        <h4 style="margin: 0; color: #2c3e50; font-size: 16px; font-weight: 500;">My Devices</h4>
                         <button id="refresh-devices" style="
-                            background: #2196F3;
+                            background: #4299e1;
                             color: white;
                             border: none;
                             padding: 6px 12px;
@@ -1461,7 +1686,7 @@
                             display: flex;
                             align-items: center;
                             gap: 4px;
-                        " onmouseover="this.style.background='#1976D2'" onmouseout="this.style.background='#2196F3'">
+                        " onmouseover="this.style.background='#3182ce'" onmouseout="this.style.background='#4299e1'">
                             <span class="material-symbols-outlined" style="font-size: 18px; font-weight: 300;">refresh</span>
                             Refresh
                         </button>
@@ -1501,7 +1726,7 @@
     ">
         <div style="
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             width: 90%;
             max-width: 500px;
             max-height: 70vh;
@@ -1511,40 +1736,39 @@
             <!-- Modal Header -->
             <div style="
                 padding: 18px 20px;
-                background: #2196F3;
-                color: white;
+                background: white;
+                border-bottom: 1px solid #e1e5e9;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             ">
-                <h3 style="margin: 0; font-size: 16px; font-weight: 500;">Choose Avatar</h3>
+                <h3 style="margin: 0; font-size: 15px; font-weight: 600; color: #2d3748;">Choose Avatar</h3>
                 <button id="close-avatar-picker" style="
                     background: none;
                     border: none;
-                    color: white;
-                    font-size: 18px;
+                    color: #a0aec0;
+                    font-size: 22px;
                     cursor: pointer;
-                    padding: 0;
-                    width: 28px;
-                    height: 28px;
+                    padding: 4px;
+                    width: 32px;
+                    height: 32px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     border-radius: 4px;
-                    transition: all 0.3s ease;
+                    transition: color 0.2s, transform 0.3s ease;
                     transform: rotate(0deg);
-                " onmouseover="this.style.background='rgba(244, 67, 54, 0.2)'; this.style.color='#f44336'; this.style.transform='rotate(180deg)'" 
-                   onmouseout="this.style.background='none'; this.style.color='white'; this.style.transform='rotate(0deg)'">
+                " onmouseover="this.style.color='#ef4444'; this.style.transform='rotate(90deg)'" onmouseout="this.style.color='#a0aec0'; this.style.transform='rotate(0deg)'">
                     ×
                 </button>
             </div>
             
             <!-- Avatar Grid -->
-            <div style="padding: 20px; max-height: 400px; overflow-y: auto;">
+            <div style="padding: 20px; max-height: 400px; overflow-y: auto; background: #f8f9fa;">
                 <div id="avatar-grid" style="
                     display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-                    gap: 12px;
+                    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+                    gap: 10px;
                     justify-items: center;
                 ">
                     <!-- Avatar options will be loaded here -->
@@ -1619,10 +1843,12 @@
                     b.classList.remove('active');
                     b.style.borderBottomColor = 'transparent';
                     b.style.background = 'none';
+                    b.style.color = '#6c757d';
                 });
                 btn.classList.add('active');
-                btn.style.borderBottomColor = '#2196F3';
+                btn.style.borderBottomColor = '#4299e1';
                 btn.style.background = 'white';
+                btn.style.color = '#495057';
                 
                 // Update tab content
                 tabContents.forEach(content => {
@@ -1635,7 +1861,28 @@
                     loadDevices();
                 }
             });
+            
+            // Add hover effects
+            btn.addEventListener('mouseenter', () => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.background = '#f1f3f4';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.background = 'none';
+                }
+            });
         });
+        
+        // Set initial active tab state
+        const activeTab = document.querySelector('.tab-btn.active');
+        if (activeTab) {
+            activeTab.style.borderBottomColor = '#4299e1';
+            activeTab.style.background = 'white';
+            activeTab.style.color = '#495057';
+        }
         
         // Load devices function
         async function loadDevices() {
@@ -2274,16 +2521,16 @@
                         data.icons.forEach(icon => {
                             const avatarOption = document.createElement('div');
                             avatarOption.style.cssText = `
-                                width: 70px;
-                                height: 70px;
+                                width: 64px;
+                                height: 64px;
                                 border-radius: 50%;
                                 background: ${icon.color};
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                font-size: 32px;
+                                font-size: 28px;
                                 cursor: pointer;
-                                transition: transform 0.2s, box-shadow 0.2s;
+                                transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
                                 border: 3px solid transparent;
                             `;
                             
@@ -2291,9 +2538,9 @@
                             
                             // Add hover effects
                             avatarOption.onmouseover = function() {
-                                this.style.transform = 'scale(1.1)';
-                                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-                                this.style.borderColor = '#2196F3';
+                                this.style.transform = 'scale(1.08)';
+                                this.style.boxShadow = '0 4px 12px rgba(66, 153, 225, 0.3)';
+                                this.style.borderColor = '#4299e1';
                             };
                             
                             avatarOption.onmouseout = function() {
@@ -2313,7 +2560,7 @@
                 })
                 .catch(err => {
                     console.error('Failed to load avatar options:', err);
-                    avatarGrid.innerHTML = '<div style="text-align: center; padding: 20px; color: #6c757d;">Error loading avatar options</div>';
+                    avatarGrid.innerHTML = '<div style="text-align: center; padding: 20px; color: #6c757d; font-size: 13px;">Error loading avatar options</div>';
                 });
         }
         
