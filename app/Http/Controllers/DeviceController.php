@@ -271,3 +271,79 @@ class DeviceController extends Controller
         ], 201);
     }
 }
+
+    /**
+     * Cleanup inactive devices (Admin only)
+     * 
+     * POST /api/admin/devices/cleanup-inactive
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function cleanupInactive(Request $request)
+    {
+        // Check if user is admin
+        $user = null;
+        if (auth()->guard('web')->check()) {
+            $user = auth()->guard('web')->user();
+        } elseif (auth()->guard('sanctum')->check()) {
+            $user = auth()->guard('sanctum')->user();
+        }
+        
+        if (!$user || !$user->isAdmin()) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Unauthorized. Admin access required.',
+                'code' => 'UNAUTHORIZED',
+            ], 403);
+        }
+        
+        $request->validate([
+            'days' => 'nullable|integer|min:1|max:365',
+            'delete' => 'nullable|boolean',
+        ]);
+        
+        $days = $request->input('days', 7);
+        $shouldDelete = $request->input('delete', false);
+        
+        $cutoffDate = now()->subDays($days);
+        
+        // Get all active devices
+        $activeDevices = Device::where('is_active', true)->get();
+        
+        $inactiveDevices = [];
+        
+        foreach ($activeDevices as $device) {
+            if ($device->isInactive($days)) {
+                $lastPingTime = $device->getLastPingTime();
+                $inactiveDevices[] = [
+                    'device_id' => $device->device_id,
+                    'name' => $device->name,
+                    'user_email' => $device->user->email ?? 'N/A',
+                    'last_seen' => $lastPingTime ? $lastPingTime->toIso8601String() : null,
+                ];
+                
+                if ($shouldDelete) {
+                    // Delete location pings first
+                    \App\Models\LocationPing::where('device_id', $device->id)->delete();
+                    $device->delete();
+                } else {
+                    // Mark as inactive
+                    $device->is_active = false;
+                    $device->save();
+                }
+            }
+        }
+        
+        return response()->json([
+            'success' => true,
+            'message' => $shouldDelete 
+                ? 'Inactive devices deleted successfully' 
+                : 'Inactive devices marked as inactive',
+            'days' => $days,
+            'action' => $shouldDelete ? 'deleted' : 'marked_inactive',
+            'devices_processed' => count($inactiveDevices),
+            'devices' => $inactiveDevices,
+        ], 200);
+    }
+}

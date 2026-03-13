@@ -67,4 +67,7 @@ Route::middleware(['web', 'admin'])->prefix('admin')->group(function () {
     Route::post('/users/{userId}/suspend', [App\Http\Controllers\AdminController::class, 'suspendUser']);
     Route::post('/users/{userId}/unsuspend', [App\Http\Controllers\AdminController::class, 'unsuspendUser']);
     Route::delete('/users/{userId}', [App\Http\Controllers\AdminController::class, 'deleteUser']);
+    
+    // Device cleanup endpoint
+    Route::post('/devices/cleanup-inactive', [DeviceController::class, 'cleanupInactive']);
 });

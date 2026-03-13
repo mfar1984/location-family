@@ -105,4 +105,39 @@ class Device extends Model
         $this->verification_code_expires_at = null;
         $this->save();
     }
+    
+    /**
+     * Check if device is inactive (no pings for specified days)
+     * 
+     * @param int $days Number of days to consider inactive
+     * @return bool
+     */
+    public function isInactive($days = 7)
+    {
+        $latestPing = $this->locationPings()
+            ->orderBy('received_at', 'desc')
+            ->first();
+        
+        if (!$latestPing) {
+            // No pings at all - consider inactive
+            return true;
+        }
+        
+        $cutoffDate = now()->subDays($days);
+        return $latestPing->received_at < $cutoffDate;
+    }
+    
+    /**
+     * Get the last ping timestamp for this device
+     * 
+     * @return \Carbon\Carbon|null
+     */
+    public function getLastPingTime()
+    {
+        $latestPing = $this->locationPings()
+            ->orderBy('received_at', 'desc')
+            ->first();
+        
+        return $latestPing ? $latestPing->received_at : null;
+    }
 }

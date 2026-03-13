@@ -18,7 +18,7 @@ class LocationController extends Controller
      */
     public function index(Request $request)
     {
-        $fiveMinutesAgo = now()->subMinutes(5);
+        $sevenMinutesAgo = now()->subMinutes(7);
         $twoMinutesAgo = now()->subMinutes(2);
 
         // Get authenticated user (web auth for dashboard)
@@ -41,7 +41,7 @@ class LocationController extends Controller
         $query = LocationPing::select('location_pings.*')
             ->join(DB::raw('(SELECT device_id, MAX(ping_timestamp) as max_timestamp 
                              FROM location_pings 
-                             WHERE received_at >= "' . $fiveMinutesAgo->toDateTimeString() . '"
+                             WHERE received_at >= "' . $sevenMinutesAgo->toDateTimeString() . '"
                              GROUP BY device_id) as latest'), function($join) {
                 $join->on('location_pings.device_id', '=', 'latest.device_id')
                      ->on('location_pings.ping_timestamp', '=', 'latest.max_timestamp');

@@ -18,6 +18,12 @@ class Kernel extends ConsoleKernel
                  ->everyThreeMinutes()
                  ->withoutOverlapping()
                  ->runInBackground();
+        
+        // Cleanup inactive devices daily at 2:00 AM
+        // Devices that haven't sent pings for 7 days will be marked as inactive
+        $schedule->command('devices:cleanup-inactive --days=7')
+                 ->dailyAt('02:00')
+                 ->withoutOverlapping();
     }
 
     /**
