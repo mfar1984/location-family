@@ -32,6 +32,12 @@ class LocationPingController extends Controller
             'cameraStatus' => 'nullable|boolean',
             'recordingStatus' => 'nullable|boolean',
             'timestamp' => 'required|integer',
+            'deviceModel' => 'nullable|string',
+            'deviceBrand' => 'nullable|string',
+            'osVersion' => 'nullable|string',
+            'appVersion' => 'nullable|string',
+            'serialNumber' => 'nullable|string',
+            'phoneNumber' => 'nullable|string',
         ]);
 
         DB::beginTransaction();
@@ -95,6 +101,13 @@ class LocationPingController extends Controller
             'recording_status' => $request->recordingStatus,
             'ping_timestamp' => $request->timestamp,
             'received_at' => now(),
+            'ip_address' => $request->ip(),
+            'device_model' => $request->deviceModel,
+            'device_brand' => $request->deviceBrand,
+            'os_version' => $request->osVersion,
+            'app_version' => $request->appVersion,
+            'serial_number' => $request->serialNumber,
+            'phone_number' => $request->phoneNumber,
         ]);
 
         // Update device last_seen timestamp

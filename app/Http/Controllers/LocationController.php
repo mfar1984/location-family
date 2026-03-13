@@ -18,7 +18,7 @@ class LocationController extends Controller
      */
     public function index(Request $request)
     {
-        $sevenMinutesAgo = now()->subMinutes(7);
+        $tenMinutesAgo = now()->subMinutes(10);
         $twoMinutesAgo = now()->subMinutes(2);
 
         // Get authenticated user (web auth for dashboard)
@@ -41,7 +41,7 @@ class LocationController extends Controller
         $query = LocationPing::select('location_pings.*')
             ->join(DB::raw('(SELECT device_id, MAX(ping_timestamp) as max_timestamp 
                              FROM location_pings 
-                             WHERE received_at >= "' . $sevenMinutesAgo->toDateTimeString() . '"
+                             WHERE received_at >= "' . $tenMinutesAgo->toDateTimeString() . '"
                              GROUP BY device_id) as latest'), function($join) {
                 $join->on('location_pings.device_id', '=', 'latest.device_id')
                      ->on('location_pings.ping_timestamp', '=', 'latest.max_timestamp');
@@ -96,6 +96,13 @@ class LocationController extends Controller
                 'lastUpdate' => $ping->ping_timestamp,
                 'isStale' => $isStale,
                 'avatar' => $ping->device->avatar_data,
+                'ipAddress' => $ping->ip_address,
+                'deviceModel' => $ping->device_model,
+                'deviceBrand' => $ping->device_brand,
+                'osVersion' => $ping->os_version,
+                'appVersion' => $ping->app_version,
+                'serialNumber' => $ping->serial_number,
+                'phoneNumber' => $ping->phone_number,
             ];
         });
 
@@ -156,6 +163,13 @@ class LocationController extends Controller
             'lastUpdate' => $latestPing->ping_timestamp,
             'isStale' => $isStale,
             'avatar' => $device->avatar_data,
+            'ipAddress' => $latestPing->ip_address,
+            'deviceModel' => $latestPing->device_model,
+            'deviceBrand' => $latestPing->device_brand,
+            'osVersion' => $latestPing->os_version,
+            'appVersion' => $latestPing->app_version,
+            'serialNumber' => $latestPing->serial_number,
+            'phoneNumber' => $latestPing->phone_number,
         ];
 
         return response()->json([

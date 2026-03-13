@@ -21,6 +21,13 @@ class LocationPing extends Model
         'recording_status',
         'ping_timestamp',
         'received_at',
+        'ip_address',
+        'device_model',
+        'device_brand',
+        'os_version',
+        'app_version',
+        'serial_number',
+        'phone_number',
     ];
 
     protected $casts = [

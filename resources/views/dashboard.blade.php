@@ -481,6 +481,42 @@
                 </div>
             </div>
             
+            <div class="info-section" id="device-info-section">
+                <h3>Device Info</h3>
+                <div class="info-item">
+                    <span class="info-label">IP Address</span>
+                    <span class="info-value" id="drawer-ip-address">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Device Model</span>
+                    <span class="info-value" id="drawer-device-model">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Device Brand</span>
+                    <span class="info-value" id="drawer-device-brand">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">OS Version</span>
+                    <span class="info-value" id="drawer-os-version">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">App Version</span>
+                    <span class="info-value" id="drawer-app-version">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Device ID</span>
+                    <span class="info-value" id="drawer-device-id">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Serial Number</span>
+                    <span class="info-value" id="drawer-serial-number">-</span>
+                </div>
+                <div class="info-item" id="phone-number-item" style="display: none;">
+                    <span class="info-label">Phone Number</span>
+                    <span class="info-value" id="drawer-phone-number">-</span>
+                </div>
+            </div>
+            
             <div class="info-section">
                 <h3>Actions</h3>
                 <button class="update-button" id="manual-update-btn">
@@ -1019,6 +1055,24 @@
             
             // Show/hide optional status section
             optionalSection.style.display = hasOptionalStatus ? 'block' : 'none';
+            
+            // Populate device info
+            document.getElementById('drawer-ip-address').textContent = deviceData.ipAddress || 'N/A';
+            document.getElementById('drawer-device-model').textContent = deviceData.deviceModel || 'N/A';
+            document.getElementById('drawer-device-brand').textContent = deviceData.deviceBrand || 'N/A';
+            document.getElementById('drawer-os-version').textContent = deviceData.osVersion || 'N/A';
+            document.getElementById('drawer-app-version').textContent = deviceData.appVersion || 'N/A';
+            document.getElementById('drawer-device-id').textContent = deviceData.deviceId || 'N/A';
+            document.getElementById('drawer-serial-number').textContent = deviceData.serialNumber || 'N/A';
+            
+            // Phone number (show only if available)
+            const phoneNumberItem = document.getElementById('phone-number-item');
+            if (deviceData.phoneNumber) {
+                phoneNumberItem.style.display = 'flex';
+                document.getElementById('drawer-phone-number').textContent = deviceData.phoneNumber;
+            } else {
+                phoneNumberItem.style.display = 'none';
+            }
             
             // Open drawer and show overlay
             drawer.classList.add('open');
