@@ -66,7 +66,8 @@ class CleanupInactiveDevices extends Command
         }
         
         // Display inactive devices
-        $this->warn("Found {count($inactiveDevices)} inactive device(s):");
+        $count = count($inactiveDevices);
+        $this->warn("Found {$count} inactive device(s):");
         $this->newLine();
         
         $tableData = [];
