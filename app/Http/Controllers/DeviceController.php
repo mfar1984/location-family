@@ -270,7 +270,6 @@ class DeviceController extends Controller
             ],
         ], 201);
     }
-}
 
     /**
      * Cleanup inactive devices (Admin only)

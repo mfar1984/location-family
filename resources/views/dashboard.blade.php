@@ -1111,12 +1111,16 @@
             updateMessage.textContent = '';
             
             try {
+                // Get CSRF token from meta tag
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                
                 // Call the manual update API endpoint
                 const response = await fetch(`/api/devices/${currentDeviceId}/update`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
                     }
                 });
                 
