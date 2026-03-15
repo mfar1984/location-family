@@ -12,6 +12,14 @@ tracker_app/
 # Tests folder
 tests/
 
+# Test files
+API_TEST_TASKS.md
+test-*
+
+# Markdown files (except README.md)
+*.md
+!README.md
+
 # Environment files
 .env
 .env.backup
