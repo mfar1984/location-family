@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - GPS Tracker</title>
+    <title>Login - LocaFam</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -365,9 +365,11 @@
     <div class="login-container">
         <div class="login-sidebar">
             <div class="sidebar-content">
-                <div class="sidebar-icon">🗺️</div>
-                <h2>GPS Tracker</h2>
-                <p>Professional location tracking and fleet management solution for modern businesses</p>
+                <div class="sidebar-icon">
+                    <img src="{{ asset('locafam.svg') }}" alt="LocaFam" style="width: 80px; height: 80px;">
+                </div>
+                <h2>LocaFam</h2>
+                <p>Keep your family safe with real-time location tracking and instant updates</p>
             </div>
         </div>
         

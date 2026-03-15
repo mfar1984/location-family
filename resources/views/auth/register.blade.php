@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Register - GPS Tracker</title>
+    <title>Register - LocaFam</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -496,9 +496,11 @@
     <div class="register-container">
         <div class="register-sidebar">
             <div class="sidebar-content">
-                <div class="sidebar-icon">🗺️</div>
-                <h2>GPS Tracker</h2>
-                <p>Join thousands of businesses using our professional tracking solution</p>
+                <div class="sidebar-icon">
+                    <img src="{{ asset('locafam.svg') }}" alt="LocaFam" style="width: 80px; height: 80px;">
+                </div>
+                <h2>LocaFam</h2>
+                <p>Join families worldwide keeping their loved ones safe with real-time location tracking</p>
             </div>
         </div>
         
