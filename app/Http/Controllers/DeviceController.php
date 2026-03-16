@@ -272,6 +272,74 @@ class DeviceController extends Controller
     }
 
     /**
+     * Get authentication token using license key and device ID
+     * This allows devices to authenticate without username/password
+     * 
+     * POST /api/devices/get-token
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getToken(Request $request)
+    {
+        $request->validate([
+            'license_key' => 'required|string|size:14',
+            'device_id' => 'required|string',
+        ]);
+
+        // Find user by license key
+        $user = \App\Models\User::where('license_key', $request->license_key)->first();
+
+        if (!$user) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Invalid license key',
+                'code' => 'INVALID_LICENSE_KEY',
+            ], 404);
+        }
+
+        // Check if user is approved and not suspended
+        if (!$user->approved) {
+            return response()->json([
+                'error' => true,
+                'message' => 'User account not approved',
+                'code' => 'USER_NOT_APPROVED',
+            ], 403);
+        }
+
+        if ($user->suspended) {
+            return response()->json([
+                'error' => true,
+                'message' => 'User account suspended',
+                'code' => 'USER_SUSPENDED',
+            ], 403);
+        }
+
+        // Verify device belongs to this user
+        $device = Device::where('device_id', $request->device_id)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if (!$device) {
+            return response()->json([
+                'error' => true,
+                'message' => 'Device not found or does not belong to this license key',
+                'code' => 'DEVICE_NOT_FOUND',
+            ], 404);
+        }
+
+        // Create token for this user
+        $token = $user->createToken('device-token-' . $device->device_id)->plainTextToken;
+
+        return response()->json([
+            'success' => true,
+            'token' => $token,
+            'device_id' => $device->device_id,
+            'device_name' => $device->name,
+        ], 200);
+    }
+
+    /**
      * Cleanup inactive devices (Admin only)
      * 
      * POST /api/admin/devices/cleanup-inactive

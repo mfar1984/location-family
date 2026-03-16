@@ -14,6 +14,7 @@ Route::get('/user', function (Request $request) {
 // Public endpoints (no auth required)
 Route::post('/login', [AuthController::class, 'apiLogin']);
 Route::post('/devices/register-with-license', [DeviceController::class, 'registerWithLicense']);
+Route::post('/devices/get-token', [DeviceController::class, 'getToken']);
 Route::get('/devices/avatar-icons', [DeviceController::class, 'getAvatarIcons']);
 Route::post('/pings', [LocationPingController::class, 'store']);
 Route::get('/devices/{deviceId}/check-updates', [DeviceController::class, 'checkUpdates']);

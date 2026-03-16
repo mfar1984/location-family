@@ -393,6 +393,7 @@ class AuthController extends Controller
                     'username' => $user->username,
                     'name' => $user->name,
                     'email' => $user->email,
+                    'license_key' => $user->license_key,
                 ]
             ]);
         }
